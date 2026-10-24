@@ -1,4 +1,5 @@
-const BASE = import.meta.env.VITE_API_URL || 'https://backend-muhammad-faizan79s-projects.vercel.app/api';
+// const BASE ='http://localhost:5000/api';
+const BASE ='https://backend-muhammad-faizan79s-projects.vercel.app/api';
 export function getToken(){return localStorage.getItem('hcm_token')}
 export async function api(path, options={}) {
  const headers={'Content-Type':'application/json',...(options.headers||{})};
