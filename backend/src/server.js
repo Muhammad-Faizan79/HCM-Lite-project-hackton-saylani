@@ -2,8 +2,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 import app from './app.js';
 import mongoose from 'mongoose';
-import {setServers} from "node:dns/promises"
-setServers(["8.8.8.8","1.1.1.1"])
+
 
 const port = process.env.PORT || 5000;
 const URI = "mongodb+srv://hackton459_db_user:faizan%40123@hackton.snjiv5m.mongodb.net/"
