@@ -13,17 +13,9 @@ import commsRoutes from './modules/communications/routes.js';
 import { errorHandler } from './shared/errors.js';
 
 const app = express();
-const allowedOrigins = [
-  'http://localhost:5173',
-  'https://YOUR-FRONTEND-DOMAIN.vercel.app'
-];
 
-app.use(cors({
-  origin: allowedOrigins,
-  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  optionsSuccessStatus: 204
-}));
+
+app.use(cors());
 
 app.use(express.json({ limit: '1mb' }));
 app.use(morgan('dev'));
