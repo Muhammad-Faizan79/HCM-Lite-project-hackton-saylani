@@ -1,67 +1,67 @@
-// // const BASE ='http://localhost:5000/api';
-// const BASE ='https://backend-muhammad-faizan79s-projects.vercel.app/api';
-// export function getToken(){return localStorage.getItem('hcm_token')}
-// export async function api(path, options={}) {
-//  const headers={'Content-Type':'application/json',...(options.headers||{})};
-//  if(getToken())headers.Authorization=`Bearer ${getToken()}`;
-//  const res=await fetch(`${BASE}${path}`,{...options,headers});
-//  const data=await res.json().catch(()=>({}));
-//  if(!res.ok)throw new Error(data.message||'Request failed');
-//  return data;
+// const BASE ='http://localhost:5000/api';
+const BASE ='https://backend-muhammad-faizan79s-projects.vercel.app/api';
+export function getToken(){return localStorage.getItem('hcm_token')}
+export async function api(path, options={}) {
+ const headers={'Content-Type':'application/json',...(options.headers||{})};
+ if(getToken())headers.Authorization=`Bearer ${getToken()}`;
+ const res=await fetch(`${BASE}${path}`,{...options,headers});
+ const data=await res.json().catch(()=>({}));
+ if(!res.ok)throw new Error(data.message||'Request failed');
+ return data;
+}
+export function saveSession(data){localStorage.setItem('hcm_token',data.token);localStorage.setItem('hcm_user',JSON.stringify(data.user))}
+export function currentUser(){try{return JSON.parse(localStorage.getItem('hcm_user')||'null')}catch{return null}}
+export function clearSession(){localStorage.removeItem('hcm_token');localStorage.removeItem('hcm_user')}
+
+// const BASE = 'https://backend-muhammad-faizan79s-projects.vercel.app/api';
+
+// export function getToken() {
+//   return localStorage.getItem('hcm_token');
 // }
-// export function saveSession(data){localStorage.setItem('hcm_token',data.token);localStorage.setItem('hcm_user',JSON.stringify(data.user))}
-// export function currentUser(){try{return JSON.parse(localStorage.getItem('hcm_user')||'null')}catch{return null}}
-// export function clearSession(){localStorage.removeItem('hcm_token');localStorage.removeItem('hcm_user')}
 
-const BASE = 'https://backend-muhammad-faizan79s-projects.vercel.app/api';
+// export async function api(path, options = {}) {
+//   const headers = { ...(options.headers || {}) };
 
-export function getToken() {
-  return localStorage.getItem('hcm_token');
-}
+//   const hasBody = options.body !== undefined && options.body !== null;
 
-export async function api(path, options = {}) {
-  const headers = { ...(options.headers || {}) };
+//   if (hasBody && !headers['Content-Type']) {
+//     headers['Content-Type'] = 'application/json';
+//   }
 
-  const hasBody = options.body !== undefined && options.body !== null;
+//   if (options.auth !== false && getToken()) {
+//     headers.Authorization = `Bearer ${getToken()}`;
+//   }
 
-  if (hasBody && !headers['Content-Type']) {
-    headers['Content-Type'] = 'application/json';
-  }
+//   const { auth, ...fetchOptions } = options;
 
-  if (options.auth !== false && getToken()) {
-    headers.Authorization = `Bearer ${getToken()}`;
-  }
+//   const res = await fetch(`${BASE}${path}`, {
+//     ...fetchOptions,
+//     headers
+//   });
 
-  const { auth, ...fetchOptions } = options;
+//   const data = await res.json().catch(() => ({}));
 
-  const res = await fetch(`${BASE}${path}`, {
-    ...fetchOptions,
-    headers
-  });
+//   if (!res.ok) {
+//     throw new Error(data.message || `Request failed (${res.status})`);
+//   }
 
-  const data = await res.json().catch(() => ({}));
+//   return data;
+// }
 
-  if (!res.ok) {
-    throw new Error(data.message || `Request failed (${res.status})`);
-  }
+// export function saveSession(data) {
+//   localStorage.setItem('hcm_token', data.token);
+//   localStorage.setItem('hcm_user', JSON.stringify(data.user));
+// }
 
-  return data;
-}
+// export function currentUser() {
+//   try {
+//     return JSON.parse(localStorage.getItem('hcm_user') || 'null');
+//   } catch {
+//     return null;
+//   }
+// }
 
-export function saveSession(data) {
-  localStorage.setItem('hcm_token', data.token);
-  localStorage.setItem('hcm_user', JSON.stringify(data.user));
-}
-
-export function currentUser() {
-  try {
-    return JSON.parse(localStorage.getItem('hcm_user') || 'null');
-  } catch {
-    return null;
-  }
-}
-
-export function clearSession() {
-  localStorage.removeItem('hcm_token');
-  localStorage.removeItem('hcm_user');
-}
+// export function clearSession() {
+//   localStorage.removeItem('hcm_token');
+//   localStorage.removeItem('hcm_user');
+// }

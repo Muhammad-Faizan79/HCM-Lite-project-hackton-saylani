@@ -16,7 +16,7 @@ const nav=[
 ];
 function App(){
  const [user,setUser]=useState(currentUser());const [setup,setSetup]=useState(false);const [menuOpen,setMenuOpen]=useState(false);
- useEffect(()=>{api('/auth/setup-status', { auth: false }).then(x=>setSetup(!x.setupComplete)).catch(()=>{});},[]);
+ useEffect(()=>{api('/auth/setup-status').then(x=>setSetup(!x.setupComplete)).catch(()=>{});},[]);
  const logout=()=>{clearSession();setUser(null);};
  if(!user)return <AuthScreen setup={setup} onAuth={u=>setUser(u)}/>;
  return <div className="app-shell">
