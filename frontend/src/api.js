@@ -1,5 +1,5 @@
-const BASE ='http://localhost:5000/api';
-// const BASE ='https://hcm-lite-project-hackton-saylani.vercel.app/api';
+// const BASE ='http://localhost:5000/api';
+const BASE ='https://hcm-lite-project-hackton-saylani-8iqqztnh2.vercel.app/api';
 export function getToken(){return localStorage.getItem('hcm_token')}
 export async function api(path, options={}) {
  const headers={'Content-Type':'application/json',...(options.headers||{})};
