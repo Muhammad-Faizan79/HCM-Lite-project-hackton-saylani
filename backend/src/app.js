@@ -11,12 +11,14 @@ import analyticsRoutes from './modules/analytics/routes.js';
 import aiRoutes from './modules/ai/routes.js';
 import commsRoutes from './modules/communications/routes.js';
 import { errorHandler } from './shared/errors.js';
-
+import constect from './server.js';
+import dotenv from "dotenv"
+dotenv.config()
 const app = express();
 
 
 app.use(cors());
-
+ constect()
 app.use(express.json({ limit: '1mb' }));
 app.use(morgan('dev'));
 app.get('/api/health', (_req, res) => res.json({ ok: true, app: 'HCM Lite' }));
@@ -32,4 +34,6 @@ app.use('/api/comms', commsRoutes);
 app.use(errorHandler);
 
 
+// app.listen("5000", ()=>console.log("run"))
 export default app;
+
