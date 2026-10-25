@@ -21,8 +21,10 @@ dotenv.config();
 import mongoose from 'mongoose';
 
 const connectDB = async (uri) => {
+  console.log(uri)
   const URI = uri;
   if (!URI) {
+    console.log(uri)
     throw new Error('MONGODB_URI environment variable is missing');
   }
 
