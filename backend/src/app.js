@@ -19,7 +19,7 @@ const app = express();
 
 app.use(cors());
  (async()=>{
-   await connectDB(process.env.MONGODB_URI)
+   await connectDB(process.env.mongodb)
  })()
 
 app.use(express.json({ limit: '1mb' }));
