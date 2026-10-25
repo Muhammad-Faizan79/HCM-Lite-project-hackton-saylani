@@ -1,31 +1,39 @@
-import dotenv from 'dotenv';
-dotenv.config();
 // import app from './app.js';
-import mongoose from 'mongoose';
 
 
 // const port = process.env.PORT || 5000;
-const URI = process.env.MONGODB_URI
 // mongoose.connect(URI)
 // .then(() => {
-//   console.log('MongoDB connected');
+  //   console.log('MongoDB connected');
   
 // })
 // .catch((err) => {
-//   console.error('MongoDB connection failed:', err.message);
-//   process.exit(1);
-// });
-// // app.listen(port, () => console.log(`HCM Lite API running on port ${port}`));
+  //   console.error('MongoDB connection failed:', err.message);
+  //   process.exit(1);
+  // });
+  // // app.listen(port, () => console.log(`HCM Lite API running on port ${port}`));
+  
+  
 
+import dotenv from 'dotenv';
+dotenv.config();
 
+import mongoose from 'mongoose';
 
-const constect= async()=>{
-  try {
-   await mongoose.connect(URI)
-   console.log("conected")
-  } catch (error) {
-    console.log("conected not", error)
+const connectDB = async () => {
+  const URI = process.env.MONGODB_URI;
+
+  if (!URI) {
+    throw new Error('MONGODB_URI environment variable is missing');
   }
-}
 
-export default constect
+  try {
+    await mongoose.connect(URI);
+    console.log('MongoDB connected successfully');
+  } catch (error) {
+    console.error('MongoDB connection failed:', error.message);
+    throw error;
+  }
+};
+
+export default connectDB;
