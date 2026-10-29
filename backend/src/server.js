@@ -16,6 +16,8 @@
   
 
 import dotenv from 'dotenv';
+import{setServers} from "node:dns/promises"
+setServers(["8.8.8.8", "1.1.1.1"])
 dotenv.config();
 
 import mongoose from 'mongoose';
